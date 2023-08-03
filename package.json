@@ -1,0 +1,29 @@
+{
+  "name": "generic-api-helper",
+  "version": "0.0.1",
+  "description": "Generic API helper to do HTTP request",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alepiumetti/generic-api-helper.git"
+  },
+  "keywords": [
+    "helper",
+    "javascript",
+    "http",
+    "request"
+  ],
+  "author": "Aitor Santoro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alepiumetti/generic-api-helper/issues"
+  },
+  "homepage": "https://github.com/alepiumetti/generic-api-helper#readme",
+  "dependencies": {
+    "axios": "^1.4.0"
+  }
+}
