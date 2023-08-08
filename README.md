@@ -69,4 +69,3 @@ y adicionalmente, una variable que actuará de flag por si no pasamos un método
 
 `let notACRUDMethod = false; //Se pondrá en true si method no es "post, get, put, delete"`
 
-
