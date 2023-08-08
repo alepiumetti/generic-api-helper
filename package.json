@@ -15,7 +15,11 @@
     "helper",
     "javascript",
     "http",
-    "request"
+    "request",
+"axios",
+"wrapper",
+"axios wrapper",
+"api helper",
   ],
   "author": "Aitor Santoro",
   "license": "ISC",
