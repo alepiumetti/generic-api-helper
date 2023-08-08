@@ -1,6 +1,6 @@
 {
   "name": "generic-api-helper",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Generic API helper to do HTTP request",
   "main": "src/index.js",
   "type": "module",
