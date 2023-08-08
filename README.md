@@ -1,4 +1,13 @@
-En la mayoria de los casos usamos 4 endpoints y 4 HTTP Methods para todo, `POST, GET, PUT, DELETE`. Entonces ¿Por qué deberiamos tener una función para cada caso, si la gran mayoría de los funcionamientos son iguales? De tener `putEquipos, getBombas, deleteSets` pasamos una función para cada HTTP method que utilizamos: `httpCRUDEndpoint`, simplemente con poner `httpCRUDEndpoint('delete', '/endpoint/sets', {id: ObjectId})` hacemos lo mismo que crear una función especifica para cada endpoint.
+# Generic API helper for Axios
+
+- [Generic API helper for Axios](#generic-api-helper-for-axios)
+      - [Como usar](#como-usar)
+      - [Funcionamiento](#funcionamiento)
+
+
+
+
+En la mayoria de los casos usamos 4 endpoints y 4 HTTP Methods para todo, `POST, GET, PUT, DELETE`. Entonces ¿Por qué deberiamos tener una función para cada caso, si la gran mayoría de los funcionamientos son iguales? De tener `putProductos, getCategorias, deletePedidos` pasamos una función para cada HTTP method que utilizamos: `httpCRUDEndpoint`, simplemente con poner `httpCRUDEndpoint('put', '/api/productos', {id: ObjectId})` hacemos lo mismo que crear una función especifica para cada endpoint.
 
 Admite tres parametros, `method`, `url`, `data`.
 ```javascript
@@ -10,22 +19,35 @@ Admite tres parametros, `method`, `url`, `data`.
  * @param {Object} data - Objecto a utilizar como parametro en el req.body o req.query
  */
 ```
-#### Como usar
+## Cómo usar
 
-Simplemente llamamos al endpoint con la URL y el método que necesitemos.Acá un ejemplo con `getEquipos`.
+Simplemente llamamos al endpoint con la URL y el método que necesitemos.Acá un ejemplo con `getProductos`.
+
+### Ejemplos 
 
 ```javascript
-const apiHelper = require("../../../utils/api.helper"); //Importamos el apiHelper
+const apiHelper = require("generic-api-helper"); //Importamos el apiHelper
 
-export const getEquipos = async (params) => {
-  return apiHelper.httpCRUDEndpoint("get", "/endpoint/equipos", params);
+export const getProductos = async (params) => {
+  return await apiHelper.httpCRUDEndpoint("get", "/api/productos", params);
 };
 ```
 Como podemos ver, no es necesario ni siquiera envoler el helper en una función `async`. Simplemente podemos hacer en nuestro componente de React algo como:
-`let data = awaitapiHelper.httpCRUDEndpoint("get", "/endpoint/equipos", params);`
+`let data = await apiHelper.httpCRUDEndpoint("get", "/api/productos", params);`
+
+```javascript
+import httpCRUDEndpoint from "generic-api-helper"; //Importamos el apiHelper
+
+export const getProductos = async (params) => {
+  return await httpCRUDEndpoint("get", "/api/productos", params);
+};
+
+// httpCRUDEndpoint(method, url, params);
 
 
-#### Funcionamiento
+```
+
+## Funcionamiento
 
 **TL;DR** `httpCRUDEndpoint` es una funcion `async` que nos permite elaborar peticiónes usando una `AxiosInstance` mapeando el string pasado en `method` a unas funciones cuyo key value son del tipo `"delete": async (url, data) => {AxiosInstance.delete(...)}` en un `JSON`.
 
